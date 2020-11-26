@@ -1,0 +1,23 @@
+doctype
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    title To-Do App
+    link(rel="stylesheet" href="//fonts.googleapis.com/css?family=PT+Sans")
+    link(rel="stylesheet" href="/stylesheets/whitespace-reset.css")
+    link(rel="stylesheet" href="/stylesheets/application.css")
+  body
+    header
+      h1 To-Do Tracker
+      block headerlinks
+
+    main
+      - let kinds = Object.keys(flash || {})
+      if kinds.length > 0
+        ul
+          each kind in kinds
+            each message in flash[kind]
+              li.flash(class=kind)= message
+
+      block main
+
